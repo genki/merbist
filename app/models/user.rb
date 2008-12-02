@@ -10,8 +10,16 @@
 # You will need to setup your database and create a user.
 class User
   include DataMapper::Resource
+  include Merb::Authentication::Mixins::ActivatedUser
   
   property :id,     Serial
   property :login,  String
-  
+  property :email,  String
+
+  #has n, :assignments
+  #has n, :groups, :through => :assignments
+
+  validates_present :login, :email
+  validates_length :login, :min => 4
+  validates_is_unique :login
 end

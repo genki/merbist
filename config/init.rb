@@ -17,6 +17,16 @@ end
  
 Merb::BootLoader.before_app_loads do
   # This will get executed after dependencies have been loaded but before your app's classes have loaded.
+
+  Merb::Slices::config[:merb_auth_slice_activation].merge!({
+    :from_email => 'no-reply@merbi.st',
+    :activation_host => 'merbi.st',
+  })
+            
+  Merb::Mailer.config = {
+    :sendmail_path => '/usr/sbin/sendmail'
+  } 
+  Merb::Mailer.delivery_method = :sendmail
 end
  
 Merb::BootLoader.after_app_loads do

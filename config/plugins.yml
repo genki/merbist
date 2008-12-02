@@ -1,0 +1,9 @@
+:exceptions:
+  :app_name: Merbist
+  :email_from: error@merbi.st
+  :web_hooks: http://localhost:4000/exceptions
+  :email_addresses: 
+    - genki@s21g.com
+  :environments:
+    - staging
+    - production

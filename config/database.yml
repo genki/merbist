@@ -22,8 +22,14 @@ test:
   #     database: sample_1_test.db
  
 production:
-  <<:       *defaults
-  database: production.db
+  :adapter: mysql
+  :database: merbist
+  :username: root
+  :password: 
+  :host: localhost
+  :socket: /var/run/mysqld/mysqld.sock
+  :encoding: utf8
+
  
   # repositories:
   #   repo1:

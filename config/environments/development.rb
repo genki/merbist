@@ -13,3 +13,12 @@ Merb::Config.use { |c|
   # Or redirect logging into a file:
   # c[:log_file]  = Merb.root / "log" / "development.log"
 }
+
+Merb::BootLoader.before_app_loads do
+  # This will get executed after dependencies have been loaded but before your app's classes have loaded.
+    
+  Merb::Slices::config[:merb_auth_slice_activation].merge!({
+    :from_email => 'no-reply@merbist.localhost',
+    :activation_host => 'merbist.localhost',
+  })
+end
