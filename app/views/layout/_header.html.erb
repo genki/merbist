@@ -1,0 +1,14 @@
+<div id="navi">
+  <%= link_to 'Top', url(:root) %>
+</div>
+<div id="menu">
+  <% if session.user %>
+    Welcome back,
+    <%= link_to h(session.user.login), resource(session.user) %>!
+    <%= link_to 'Logout', url(:logout) %>
+  <% else %>
+    <%= link_to 'Login', url(:login) %>
+    <%= link_to 'Sing up', resource(:users, :new) %>
+  <% end %>
+</div>
+<div class="clear"><!----></div>
