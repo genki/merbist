@@ -16,10 +16,11 @@ class User
   property :login,  String
   property :email,  String
 
-  #has n, :assignments
+  has n, :plugins
   #has n, :groups, :through => :assignments
 
   validates_present :login, :email
   validates_length :login, :min => 4
   validates_is_unique :login
+  validates_format :email, :as => :email_address
 end
