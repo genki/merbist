@@ -1,0 +1,6 @@
+<div class="command">
+  <%= link_to 'Index', resource(:plugins) %>
+  <% if session.user %>
+    <%= link_to 'New', resource(:plugins, :new) %>
+  <% end %>
+</div>

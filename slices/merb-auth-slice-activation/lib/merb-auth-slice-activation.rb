@@ -2,10 +2,10 @@ if defined?(Merb::Plugins)
 
   $:.unshift File.dirname(__FILE__)
 
-  load_dependency 'merb-slices'
-  load_dependency 'merb-auth-core'
-  load_dependency 'merb-auth-more'
-  load_dependency 'merb-mailer'
+  load_dependency 'merb-slices', :immediate => true
+  load_dependency 'merb-auth-core', :immediate => true
+  load_dependency 'merb-auth-more', :immediate => true
+  load_dependency 'merb-mailer', :immediate => true
   require(File.expand_path(File.dirname(__FILE__) / "merb-auth-slice-activation" / "mixins") / "activated_user")
   
   Merb::Plugins.add_rakefiles "merb-auth-slice-activation/merbtasks", "merb-auth-slice-activation/slicetasks", "merb-auth-slice-activation/spectasks"
