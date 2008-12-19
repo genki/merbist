@@ -3,7 +3,7 @@ class Plugin
   
   property :id, Serial
   property :name, String
-  property :home, URI
+  property :home, Text
   property :description, Text
 
   belongs_to :user
@@ -12,5 +12,5 @@ class Plugin
   validates_present :home
   validates_present :user
   validates_present :description
-  #validates_format :home, :as => :url
+  validates_format :home, :as => :url
 end
