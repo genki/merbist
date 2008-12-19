@@ -1,6 +1,7 @@
 <div id="navi">
   <%= link_to 'Top', url(:root) %>
-  <%= link_to 'Plugin', resource(:plugins) %>
+  <%= link_to 'Plugins', resource(:plugins) %>
+  <%= link_to 'Users', resource(:users) %>
 </div>
 <div id="menu">
   <% if session.user %>
