@@ -7,6 +7,7 @@ body {text-align: center}
 .error {color: #800}
 div.error {border: #800 1px solid}
 div.error {padding: 10px}
+div.error {margin-bottom: 10px}
 div.error h2 {margin: 5px}
 input.error {background: #F88}
 textarea.error {background: #F88}
@@ -14,8 +15,9 @@ textarea.error {background: #F88}
 .notice {color: #080}
 div.notice {border: #080 1px solid}
 div.notice {padding: 10px}
+div.notice {margin-bottom: 10px}
 
-div.command {text-align: right}
+div.command {text-align: left}
 
 #base {text-align: left}
 #base {margin: 0px auto}
@@ -37,3 +39,4 @@ div.command {text-align: right}
 #footer a {color: #000}
 
 h1 {text-align: center}
+h1 a {color: #000}

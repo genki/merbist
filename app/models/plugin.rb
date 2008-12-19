@@ -10,6 +10,7 @@ class Plugin
 
   validates_present :name
   validates_present :home
+  validates_present :user
   validates_present :description
-  validates_format :home, :as => :url
+  #validates_format :home, :as => :url
 end

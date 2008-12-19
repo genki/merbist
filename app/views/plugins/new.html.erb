@@ -2,5 +2,33 @@
 
 <h1>Register New Plugin</h1>
 
-<p>Edit this file in <tt>app/views/plugins/new.html.erb</tt></p>
-<p>For more information and examples of CRUD views read <a href="http://wiki.merbivore.com/howto/crud_view_example_with_merb_using_erb"> this wiki page</a>
+<%= error_messages_for @plugin %>
+
+<%= form_for @plugin, :action => resource(:plugins) do %>
+<dl>
+  <dt>
+    <%= label 'Name', :for => :name %>
+  </dt>
+  <dd>
+    <%= text_field :name %>
+  </dd>
+  <dt>
+    <%= label 'Home Page', :for => :home %>
+  </dt>
+  <dd>
+    <%= text_field :home %>
+  </dd>
+  <dt>
+    <%= label 'description', :for => :description %>
+  </dt>
+  <dd>
+    <%= text_area :description %>
+  </dd>
+  <dt>
+    Ready to register?
+  </dt>
+  <dd>
+    <%= submit 'Register Plugin' %>
+  </dd>
+</dl>
+<% end =%>

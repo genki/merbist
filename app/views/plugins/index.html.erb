@@ -5,6 +5,7 @@
 <ul>
   <% @plugins.each do |plugin| %>
     <li>
+      <%= link_to plugin.name, resource(plugin) %>
     </li>
   <% end %>
 </ul>

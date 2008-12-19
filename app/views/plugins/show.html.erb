@@ -1,4 +1,20 @@
-<h1>Plugins controller, show action</h1>
+<%= partial("command") %>
 
-<p>Edit this file in <tt>app/views/plugins/show.html.erb</tt></p>
-<p>For more information and examples of CRUD views read <a href="http://wiki.merbivore.com/howto/crud_view_example_with_merb_using_erb"> this wiki page</a>
+<h1>
+  <%= link_to @plugin.name, resource(@plugin) %>
+</h1>
+
+<dl>
+  <dt>Description</dt>
+  <dd>
+    <%= h @plugin.description %>
+  </dd>
+  <dt>Home Page</dt>
+  <dd>
+    <%= link_to @plugin.home, @plugin.home %>
+  </dd>
+  <dt>Registered by</dt>
+  <dd>
+    <%= link_to @plugin.user.login, resource(@plugin.user) %>
+  </dd>
+</dl>

@@ -27,6 +27,7 @@ class Plugins < Application
 
   def create(plugin)
     @plugin = Plugin.new(plugin)
+    @plugin.user = session.user
     if @plugin.save
       redirect resource(@plugin), :message => {:notice => "Plugin was successfully created"}
     else
