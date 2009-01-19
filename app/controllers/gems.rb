@@ -1,4 +1,37 @@
 class Gems < Application
+  before :ensure_authenticated, :only => [:new, :create]
+
+  def index
+    spec_path = File.join(Merb::Config[:gem_home], 'specifications')
+    @gems = {}
+    Dir.glob(File.join(spec_path, "*.gemspec")).each do |file|
+      spec = Gem::Specification.load(file)
+      @gems[spec.name] ||= []
+      @gems[spec.name] << spec.version
+    end
+    render
+  end
+
+  def new
+    render
+  end
+
+  def create(file)
+    name = File.basename(file[:filename])
+    spec_name = "#{name}spec"
+    spec_path = File.join(Merb::Config[:gem_home], 'specifications', spec_name)
+    IO.popen("gem specification #{file[:tempfile].path}") do |io|
+      spec = Gem::Specification.from_yaml(io.read)
+      open(spec_path, "w") do |spec_file|
+        spec_file.write spec.to_ruby
+      end
+    end
+    gem_path = File.join(Merb::Config[:gem_home], 'cache', name)
+    system "cp -f #{file[:tempfile].path} #{gem_path}"
+    redirect resource(:gems, :new), :message => {
+      :notice => "#{name} is successfully uploaded."}
+  end
+
   def show(name)
     only_provides :gem
     gem_path = File.join(Merb::Config[:gem_home], 'cache', name)

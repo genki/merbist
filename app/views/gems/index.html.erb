@@ -1,0 +1,14 @@
+<div id="command">
+  <%= link_to "Upload", resource(:gems, :new) %>
+</div>
+
+<h1>Gems</h1>
+
+<ul>
+<% @gems.each do |name, versions| %>
+  <li>
+    <%= h(name) %>
+    (<%= versions.sort.reverse.join(", ") %>)
+  </li>
+<% end %>
+</ul>
