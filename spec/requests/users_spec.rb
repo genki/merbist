@@ -2,6 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
 given "a user exists" do
   User.all.destroy!
+  login
   request(resource(:users), :method => "POST", 
     :params => { :user => { :id => nil }})
 end
@@ -18,7 +19,6 @@ describe "resource(:users)" do
     end
 
     it "contains a list of users" do
-      pending
       @response.should have_xpath("//ul")
     end
     
@@ -30,22 +30,8 @@ describe "resource(:users)" do
     end
     
     it "has a list of users" do
-      pending
       @response.should have_xpath("//ul/li")
     end
-  end
-  
-  describe "a successful POST" do
-    before(:each) do
-      User.all.destroy!
-      @response = request(resource(:users), :method => "POST", 
-        :params => { :user => { :id => nil }})
-    end
-    
-    it "redirects to resource(:users)" do
-      @response.should redirect_to(resource(User.first), :message => {:notice => "user was successfully created"})
-    end
-    
   end
 end
 

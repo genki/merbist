@@ -27,7 +27,6 @@
 
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
-  resources :gems
   resources :plugins
   resources :users
   # RESTful routes
@@ -37,16 +36,11 @@ Merb::Router.prepare do
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
   slice(:merb_auth_slice_activation, :name_prefix => nil, :path_prefix => "")
 
-  match(%r{^/gems/(.*)$}).to(
-    :controller => 'gems', :action => 'show', :name => "[1]")
-  match('/specs.4.8.gz').to(:controller => 'gems', :action => 'specs')
-  match('/Marshal.4.8').to(:controller => 'gems', :action => 'marshal')
-
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
   # routes, you may want to comment/remove this line to prevent
   # clients from calling your create or destroy actions with a GET
-  default_routes
+  #default_routes
 
   authenticate do
     match('/users/:id/edit', :controller => 'users', :action => 'edit')
@@ -54,4 +48,31 @@ Merb::Router.prepare do
   
   # Change this for your home page to be available at /
   match('/').to(:controller => 'top', :action =>'index').name(:root)
+  match(%r{^/(.*)$}).to(
+    :controller => 'top', :action => 'gems', :path => "[1]")
+end
+
+Merb::Test.add_helpers do
+  def create_default_user
+    unless User.first(:login => "krusty")
+      user = User.new(
+        :login => "krusty",
+        :password => "klown",
+        :password_confirmation => "klown",
+        :email => 'genki@s21g.com',
+        :activated_at => Time.now
+      )
+      user.save or raise "can't create user"
+      user.activation_code = nil
+      user.save or raise "can't activate user"
+    end
+  end
+
+  def login
+    create_default_user
+    request("/login", {
+      :method => "PUT",
+      :params => {:login => "krusty", :password => "klown"}
+    })
+  end
 end

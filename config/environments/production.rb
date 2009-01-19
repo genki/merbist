@@ -17,5 +17,5 @@ Merb::BootLoader.before_app_loads do
     :activation_host => 'merbi.st',
   })
 
-  Merb::Config[:gem_home] = "/mnt/git/gems"
+  Merb::Config[:gem_home] = Merb.root / "public/system"
 end

@@ -2,8 +2,15 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
 given "a plugin exists" do
   Plugin.all.destroy!
+  login
   request(resource(:plugins), :method => "POST", 
-    :params => { :plugin => { :id => nil }})
+    :params => { :plugin => {
+      :id => nil,
+      :name => 'test',
+      :home => 'http://blog.s21g.com/genki',
+      :user_id => User.first.id,
+      :description => "Test Plugin"
+    }})
 end
 
 describe "resource(:plugins)" do
@@ -18,7 +25,6 @@ describe "resource(:plugins)" do
     end
 
     it "contains a list of plugins" do
-      pending
       @response.should have_xpath("//ul")
     end
     
@@ -30,7 +36,6 @@ describe "resource(:plugins)" do
     end
     
     it "has a list of plugins" do
-      pending
       @response.should have_xpath("//ul/li")
     end
   end
@@ -38,8 +43,15 @@ describe "resource(:plugins)" do
   describe "a successful POST" do
     before(:each) do
       Plugin.all.destroy!
+      login
       @response = request(resource(:plugins), :method => "POST", 
-        :params => { :plugin => { :id => nil }})
+        :params => { :plugin => {
+          :id => nil,
+          :name => 'test',
+          :home => 'http://blog.s21g.com/genki',
+          :user_id => User.first.id,
+          :description => "Test Plugin"
+        }})
     end
     
     it "redirects to resource(:plugins)" do
