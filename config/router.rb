@@ -39,6 +39,7 @@ Merb::Router.prepare do
   match(%r{^/gems/(.*)$}).to(
     :controller => 'gems', :action => 'show', :name => "[1]")
   match('/specs.4.8.gz').to(:controller => 'gems', :action => 'specs')
+  match('/Marshal.4.8').to(:controller => 'gems', :action => 'marshal')
 
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
