@@ -14,6 +14,17 @@ class Gems < Application
     end
     dump = Marshal.dump(specs)
     require 'zlib'
-    send_data Zlib::Deflate.deflate(dump)
+    require 'tempfile'
+    begin
+      tmp = Tempfile.new("merbist-gems")
+      Zlib::GzipWriter.open(tmp.path, Zlib::BEST_COMPRESSION) do |gz|
+        gz.mtime = File.mtime(tmp.path)
+        gz.orig_name = "specs.4.8"
+        gz.write dump
+      end
+      send_file tmp.path, :filename => "spec.4.8.gz"
+    ensure
+      tmp.close
+    end
   end
 end
