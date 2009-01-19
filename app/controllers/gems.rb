@@ -18,6 +18,7 @@ class Gems < Application
 
   def create(file)
     name = File.basename(file[:filename])
+    raise "Invalid file type." unless File.extname(name) == ".gem"
     spec_name = "#{name}spec"
     spec_path = File.join(Merb::Config[:gem_home], 'specifications', spec_name)
     IO.popen("gem specification #{file[:tempfile].path}") do |io|
