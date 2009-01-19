@@ -31,10 +31,13 @@ Merb::Router.prepare do
   resources :users
   # RESTful routes
   # resources :posts
-  
+
   # Adds the required routes for merb-auth using the password slice
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
   slice(:merb_auth_slice_activation, :name_prefix => nil, :path_prefix => "")
+
+  match(%r{^/gems/(.*)$}).to(
+    :controller => 'gems', :action => 'show', :name => "[1]")
 
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based

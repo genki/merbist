@@ -21,4 +21,6 @@ Merb::BootLoader.before_app_loads do
     :from_email => 'no-reply@merbist.localhost',
     :activation_host => 'merbist.localhost',
   })
+
+  Merb::Config[:gem_home] = "/opt/local/lib/ruby/gems/1.8"
 end

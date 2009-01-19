@@ -16,4 +16,6 @@ Merb::BootLoader.before_app_loads do
     :from_email => 'no-reply@merbi.st',
     :activation_host => 'merbi.st',
   })
+
+  Merb::Config[:gem_home] = "/mnt/git/gems"
 end
