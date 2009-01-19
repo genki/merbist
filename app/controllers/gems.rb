@@ -13,6 +13,7 @@ class Gems < Application
       specs << [spec.name, spec.version, spec.platform]
     end
     dump = Marshal.dump(specs)
+    require 'zlib'
     send_data Zlib::Deflate.deflate(dump)
   end
 end
