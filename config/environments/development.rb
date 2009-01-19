@@ -22,5 +22,5 @@ Merb::BootLoader.before_app_loads do
     :activation_host => 'merbist.localhost',
   })
 
-  Merb::Config[:gem_home] = Merb.root / "log/gems/1.8"
+  Merb::Config[:gem_home] = Merb.root / "log/gems"
 end
