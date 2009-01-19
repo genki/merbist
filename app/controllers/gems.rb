@@ -31,11 +31,6 @@ class Gems < Application
   def marshal
     spec_path = File.join(Merb::Config[:gem_home], 'specifications')
     index = Gem::SourceIndex.from_gems_in(spec_path)
-    specs = []
-    index.each do |(name, spec)|
-      specs << [spec.name, spec.version, spec.platform]
-    end
-    dump = Marshal.dump(specs)
-    send_data dump
+    send_data Marshal.dump(index)
   end
 end
