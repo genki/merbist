@@ -15,13 +15,13 @@ class Top < Application
       gemdir = File.join(Merb::Config[:gem_home], 'gems')
       plugins.each do |plugin|
         begin
-          name = File.basename(plugin.repos).split(/\.git$/)[0]
+          name = File.basename(plugin.repos.strip).split(/\.git$/)[0]
           path = File.join(gemdir, name)
           if File.exist?(path)
             git = Git.open(path)
             git.pull
           else
-            repos = "--depth=1 #{plugin.repos}"
+            repos = "--depth=1 #{plugin.repos.strip}"
             git = Git.clone(repos, path)
           end
           spec = Gem::Specification.load(File.join(path, "#{name}.gemspec"))
@@ -34,7 +34,7 @@ class Top < Application
       end
       system "gem", "generate_index", "-d", Merb::Config[:gem_home]
     end
-    redirect request.referer, :message => {
+    redirect :index, :message => {
       :notice => "#{plugins.size} repos are being fetched in background."}
   end
 end
