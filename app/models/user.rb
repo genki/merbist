@@ -15,6 +15,7 @@ class User
   property :id,     Serial
   property :login,  String
   property :email,  String
+  property :admin,  Boolean
 
   has n, :plugins
   #has n, :groups, :through => :assignments

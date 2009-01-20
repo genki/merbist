@@ -17,4 +17,12 @@
   <dd>
     <%= link_to @plugin.user.login, resource(@plugin.user) %>
   </dd>
+  <% unless @plugin.repos.blank? %>
+    <dt>
+      Repository
+    </dt>
+    <dd>
+      <%= h(@plugin.repos) %>
+    </dd>
+  <% end %>
 </dl>

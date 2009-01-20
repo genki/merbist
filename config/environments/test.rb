@@ -12,5 +12,5 @@ Merb::Config.use { |c|
 }
 
 Merb::BootLoader.before_app_loads do
-  Merb::Mailer.delivery_method = :sendmail
+  Merb::Mailer.delivery_method = :test_send
 end

@@ -5,6 +5,7 @@ class Plugin
   property :name, String
   property :home, Text
   property :description, Text
+  property :repos, Text
 
   belongs_to :user
 

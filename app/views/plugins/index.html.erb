@@ -6,6 +6,9 @@
   <% @plugins.each do |plugin| %>
     <li>
       <%= link_to plugin.name, resource(plugin) %>
+      <% unless plugin.repos.blank? %>
+        &dagger;
+      <% end %>
     </li>
   <% end %>
 </ul>

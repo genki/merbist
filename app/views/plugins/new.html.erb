@@ -24,6 +24,15 @@
   <dd>
     <%= text_area :description %>
   </dd>
+  <% if session.user.admin? %>
+    <dt>
+      <%= label "Repository", :for => :repos %>
+      Ex) git://github.com/{user id}/{project name}.git
+    </dt>
+    <dd>
+      <%= text_field :repos %>
+    </dd>
+  <% end %>
   <dt>
     Ready to register?
   </dt>

@@ -27,6 +27,7 @@
 
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
+  resources :gems
   resources :plugins
   resources :users
   # RESTful routes
@@ -48,6 +49,7 @@ Merb::Router.prepare do
   
   # Change this for your home page to be available at /
   match('/').to(:controller => 'top', :action =>'index').name(:root)
+  match('/fetch').to(:controller => 'top', :action => 'fetch').name(:fetch)
   match(%r{^/(.*)$}).to(
     :controller => 'top', :action => 'gems', :path => "[1]")
 end
