@@ -1,4 +1,9 @@
-<h1>Plugins controller, edit action</h1>
+<%= partial("command") %>
 
-<p>Edit this file in <tt>app/views/plugins/edit.html.erb</tt></p>
-<p>For more information and examples of CRUD views read <a href="http://wiki.merbivore.com/howto/crud_view_example_with_merb_using_erb"> this wiki page</a>
+<h1>Edit Plugin</h1>
+
+<%= error_messages_for @plugin %>
+
+<%= form_for @plugin, :action => resource(@plugin), :method => :put do %>
+  <%= partial :form %>
+<% end =%>

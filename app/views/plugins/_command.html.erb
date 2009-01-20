@@ -2,5 +2,8 @@
   <%= link_to 'Index', resource(:plugins) %>
   <% if session.user %>
     <%= link_to 'New', resource(:plugins, :new) %>
+    <% if @plugin && @plugin.user == session.user %>
+      <%= link_to 'Edit', resource(@plugin, :edit) %>
+    <% end %>
   <% end %>
 </div>
