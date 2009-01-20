@@ -11,7 +11,7 @@ class Top < Application
 
   def fetch
     plugins = Plugin.all(:repos.not => nil)
-    #run_later do
+    run_later do
       gemdir = File.join(Merb::Config[:gem_home], 'gems')
       plugins.each do |plugin|
         begin
@@ -33,7 +33,7 @@ class Top < Application
         end
       end
       system "gem", "generate_index", "-d", Merb::Config[:gem_home]
-    #end
+    end
     redirect request.referer, :message => {
       :notice => "#{plugins.size} repos are being fetched in background."}
   end
