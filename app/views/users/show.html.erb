@@ -1,3 +1,7 @@
+<% if session.user == @user || (session.user && session.user.admin?) %>
+  <%= partial :command %>
+<% end %>
+
 <h1>
   About
   <%= @user.login %>
@@ -12,4 +16,10 @@
   <dd>
     <%= @user.plugins.count %>
   </dd>
+  <% if session.user && session.user.admin? %>
+    <dt>Admin?</dt>
+    <dd>
+      <%= @user.admin %>
+    </dd>
+  <% end %>
 </dl>
