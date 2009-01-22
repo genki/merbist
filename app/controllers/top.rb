@@ -43,8 +43,9 @@ private
         path = File.join(gemdir, name)
         if File.exist?(path)
           git = Git.open(path)
-          git.fetch "origin master"
-          git.merge "origin"
+          git.chdir do
+            system "git pull origin"
+          end
         else
           repos = "--depth=1 #{plugin.repos.strip}"
           git = Git.clone(repos, path)
