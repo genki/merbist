@@ -2,7 +2,7 @@ class Users < Application
   # provides :xml, :yaml, :js
 
   def index
-    @users = User.all
+    @users = User.desc.paginate(params.merge(:per_page => 20))
     display @users
   end
 

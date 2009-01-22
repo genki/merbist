@@ -15,4 +15,8 @@ class Plugin
   validates_present :user
   validates_present :description
   validates_format :home, :as => :url
+
+  def self.desc
+    all(:order => [:id.desc])
+  end
 end

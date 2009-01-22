@@ -24,4 +24,8 @@ class User
   validates_length :login, :min => 4
   validates_is_unique :login
   validates_format :email, :as => :email_address
+
+  def self.desc
+    all(:order => [:id.desc])
+  end
 end
