@@ -15,7 +15,28 @@ class Top < Application
 
   def fetch
     plugins = Plugin.all(:repos.not => nil)
+    gems_count = plugins.size
     gemdir = File.join(Merb::Config[:gem_home], 'gems')
+    lockfile = File.join(gemdir, '.lockfile')
+    file = open(lockfile, "w")
+    if file.flock(File::LOCK_EX|File::LOCK_NB)
+      Thread.new do
+        begin
+          generate_index(gemdir, plugins)
+        ensure
+          file.flock(File::LOCK_UN)
+        end
+      end
+      redirect url(:root), :message => {
+        :notice => "#{gems_count} repos are being fetched in background."}
+    else
+      redirect url(:root), :message => {
+        :error => "Previous task is running."}
+    end
+  end
+
+private
+  def generate_index(gemdir, plugins)
     plugins.each do |plugin|
       begin
         name = File.basename(plugin.repos.strip).split(/\.git$/)[0]
@@ -30,13 +51,11 @@ class Top < Application
         spec = Gem::Specification.load(File.join(path, "#{name}.gemspec"))
         git.chdir do
           filename = Gem::Builder.new(spec).build
-          system "mv", '-f', filename, ".."
+          FileUtils.mv filename, "..", :force => true
         end
       rescue Exception
       end
     end
     system "gem", "generate_index", "-d", Merb::Config[:gem_home]
-    redirect url(:root), :message => {
-      :notice => "#{plugins.size} repos are being fetched in background."}
   end
 end
