@@ -53,7 +53,10 @@ private
           filename = Gem::Builder.new(spec).build
           FileUtils.mv filename, "..", :force => true
         end
-      rescue Exception
+      rescue Exception => e
+        plugin.update_attributes :error => e.message
+      else
+        plugin.update_attributes :error => nil
       end
     end
     system "gem", "generate_index", "-d", Merb::Config[:gem_home]

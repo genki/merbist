@@ -22,6 +22,8 @@ div.command {text-align: left}
 .footnote {margin: 40px 0px 0px 0px}
 .footnote {font-size: 12px}
 
+.problem {color: #800}
+
 #base {text-align: left}
 #base {margin: 0px auto}
 #base {padding: 0px 0px 0px 0px}
@@ -43,3 +45,7 @@ div.command {text-align: left}
 
 h1 {text-align: center}
 h1 a {color: #000}
+
+dl.form input {width: 580px}
+dl.form input.submit {width: auto}
+dl.form textarea {width: 680px}

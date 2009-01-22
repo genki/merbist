@@ -9,6 +9,11 @@
       <% unless plugin.repos.blank? %>
         &dagger;
       <% end %>
+      <% if plugin.error %>
+        <span class="problem">
+          (has problem)
+        </span>
+      <% end %>
     </li>
   <% end %>
 </ul>

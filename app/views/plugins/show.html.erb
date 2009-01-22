@@ -25,4 +25,12 @@
       <%= h(@plugin.repos) %>
     </dd>
   <% end %>
+  <% if @plugin.error %>
+    <dt class="problem">
+      Problem
+    </dt>
+    <dd class="problem">
+      <%= h(@plugin.error) %>
+    </dd>
+  <% end %>
 </dl>

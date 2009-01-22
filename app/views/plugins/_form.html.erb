@@ -1,4 +1,4 @@
-<dl>
+<dl class="form">
   <dt>
     <%= label 'Name', :for => :name %>
   </dt>
@@ -15,7 +15,7 @@
     <%= label 'description', :for => :description %>
   </dt>
   <dd>
-    <%= text_area :description %>
+    <%= text_area :description, :rows => 5 %>
   </dd>
   <% if session.user && session.user.admin? %>
     <dt>
@@ -30,6 +30,6 @@
     Ready to register?
   </dt>
   <dd>
-    <%= submit 'Register Plugin' %>
+    <%= submit 'Register Plugin', :class => :submit %>
   </dd>
 </dl>
