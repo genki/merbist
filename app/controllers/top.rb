@@ -1,4 +1,8 @@
 class Top < Application
+  before do
+    debugger
+  end
+
   def index
     render
   end

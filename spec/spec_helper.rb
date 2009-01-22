@@ -22,3 +22,28 @@ Spec::Runner.configure do |config|
     DataMapper.auto_migrate! if Merb.orm == :datamapper
   end
 end
+
+Merb::Test.add_helpers do
+  def create_default_user
+    unless User.first(:login => "krusty")
+      user = User.new(
+        :login => "krusty",
+        :password => "klown",
+        :password_confirmation => "klown",
+        :email => 'genki@s21g.com',
+        :activated_at => Time.now
+      )
+      user.save or raise "can't create user"
+      user.activation_code = nil
+      user.save or raise "can't activate user"
+    end
+  end
+
+  def login
+    create_default_user
+    request("/login", {
+      :method => "PUT",
+      :params => {:login => "krusty", :password => "klown"}
+    })
+  end
+end
