@@ -19,7 +19,7 @@ div.notice {margin-bottom: 10px}
 
 div.command {text-align: left}
 
-.footnote {margin: 40px 0px 0px 0px}
+.footnote {margin: 20px 0px 0px 0px}
 .footnote {font-size: 12px}
 
 .problem {color: #800}
@@ -49,3 +49,6 @@ h1 a {color: #000}
 dl.form input {width: 580px}
 dl.form input.submit {width: auto}
 dl.form textarea {width: 680px}
+
+.pagination {text-align: center}
+.pagination .disabled {color: #AAA}

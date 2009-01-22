@@ -30,3 +30,4 @@ dependency "dm-serializer", dm_gems_version
 dependency "merb_datamapper", merb_gems_version
 
 dependency "git"
+dependency "dm-pagination"

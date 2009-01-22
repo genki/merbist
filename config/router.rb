@@ -52,4 +52,6 @@ Merb::Router.prepare do
   match('/fetch').to(:controller => 'top', :action => 'fetch').name(:fetch)
   match(%r{^/(.*)$}).to(
     :controller => 'top', :action => 'gems', :path => "[1]")
+
+  default_routes
 end
