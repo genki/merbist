@@ -32,6 +32,16 @@
     <dd class="problem">
       <%= h(@plugin.error) %>
     </dd>
+  <% elsif !@plugin.repos.blank? %>
+    <dt>
+      Install
+    </dt>
+    <dd>
+      You can install this gem by <br />
+      <code>
+        gem install <%= h(@plugin.gemname) %> --source http://merbi.st
+      </code>
+    </dd>
   <% end %>
 </dl>
 

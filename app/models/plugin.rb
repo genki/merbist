@@ -25,11 +25,15 @@ class Plugin
     all(:order => [:id.desc])
   end
 
+  def gemname
+    return nil if repos.blank?
+    File.basename(repos.strip).split(%r{\.git$})[0]
+  end
+
   def readme
     return @readme if @readme
     return nil if repos.blank?
     gemdir = File.join(Merb::Config[:gem_home], 'gems')
-    gemname = File.basename(repos.strip).split(%r{\.git$})[0]
     pattern = File.join(gemdir, gemname, "README*")
     path = Dir.glob(pattern).sort.first
     return nil if path.blank?
