@@ -7,6 +7,8 @@ class Plugin
   property :description, Text
   property :repos, Text
   property :error, Text
+  property :created_at, DateTime
+  property :updated_at, DateTime
 
   belongs_to :user
 
@@ -16,11 +18,10 @@ class Plugin
   validates_present :description
   validates_format :home, :as => :url
 
+  before(:create){@created_at = DateTime.now}
+  before(:save){@updated_at = DateTime.now}
+
   def self.desc
     all(:order => [:id.desc])
-  end
-
-  def to_atom
-    "test"
   end
 end

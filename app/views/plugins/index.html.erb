@@ -28,3 +28,11 @@
     gem install gem-name --source http://merbi.st
   </code>
 </div>
+
+<% throw_content :for_head do %>
+  <%=
+  tag :link, nil, :rel => :alternate,
+    :type => "application/rss+xml", :title => "Atom",
+    :href => resource(:plugins, :format => :atom)
+  %>
+<% end %>
