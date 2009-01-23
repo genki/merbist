@@ -1,4 +1,5 @@
 class Plugins < Application
+  before :append_title
   # provides :xml, :yaml, :js
 
   def index
@@ -10,6 +11,7 @@ class Plugins < Application
   def show(id)
     @plugin = Plugin.get(id)
     raise NotFound unless @plugin
+    prepend_plugin_name_to_title(@plugin)
     display @plugin
   end
 
@@ -23,6 +25,7 @@ class Plugins < Application
     only_provides :html
     @plugin = Plugin.get(id)
     raise NotFound unless @plugin
+    prepend_plugin_name_to_title(@plugin)
     display @plugin
   end
 
@@ -57,4 +60,12 @@ class Plugins < Application
     end
   end
 
+private
+  def append_title
+    @title += " Plugins"
+  end
+
+  def prepend_plugin_name_to_title(plugin)
+    @title = "#{plugin.name} - #{@title}"
+  end
 end # Plugins

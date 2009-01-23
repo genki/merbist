@@ -1,4 +1,5 @@
 class Users < Application
+  before :append_title
   # provides :xml, :yaml, :js
 
   def index
@@ -58,4 +59,8 @@ class Users < Application
     end
   end
 
+private
+  def append_title
+    @title += " Users"
+  end
 end # Users
