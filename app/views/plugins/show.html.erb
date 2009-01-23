@@ -34,3 +34,9 @@
     </dd>
   <% end %>
 </dl>
+
+<% if @plugin.readme %>
+<div class="readme">
+  <pre><code><%= h(@plugin.readme) %></code></pre>
+</div>
+<% end %>

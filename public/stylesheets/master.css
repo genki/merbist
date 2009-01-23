@@ -52,3 +52,8 @@ dl.form textarea {width: 680px}
 
 .pagination {text-align: center}
 .pagination .disabled {color: #AAA}
+
+.readme {color: #CCE}
+.readme {background: #124}
+.readme {font-size: 12px}
+.readme {padding: 10px}

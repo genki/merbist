@@ -2,7 +2,7 @@ xml.instruct! :xml, :version=>"1.0"
 xml.feed(:xmlns => "http://www.w3.org/2005/Atom") do |feed|
   feed.title "Plugins for Merbist"
   feed.link :type => 'text/html', :rel => 'alternate',
-    :href => URI.join(request.full_uri, resource(:plugins))
+    :href => full_resource(:plugins)
 
   @plugins.each do |plugin|
     feed.entry do |entry|
@@ -12,7 +12,7 @@ xml.feed(:xmlns => "http://www.w3.org/2005/Atom") do |feed|
       entry.issued plugin.created_at
       entry.modified plugin.updated_at
       entry.link :type => "text/html", :rel => "alternate",
-        :href => URI.join(request.full_uri, resource(plugin))
+        :href => full_resource(plugin)
       entry.author do |author|
         author.name plugin.user.login
       end

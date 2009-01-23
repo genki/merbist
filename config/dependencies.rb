@@ -32,3 +32,4 @@ dependency "merb_datamapper", merb_gems_version
 dependency "git"
 dependency "dm-pagination"
 dependency "merb-builder"
+dependency "merb_full_url"
