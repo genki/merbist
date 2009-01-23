@@ -57,3 +57,11 @@ dl.form textarea {width: 680px}
 .readme {background: #124}
 .readme {font-size: 12px}
 .readme {padding: 10px}
+.readme pre {white-space : -moz-pre-wrap}
+.readme pre {white-space : -pre-wrap}
+.readme pre {white-space : -o-pre-wrap}
+.readme pre {white-space : pre-wrap}
+.readme pre {word-break  : break-all}
+.readme pre {word-wrap   : break-word}
+.readme pre {font-size: 12px}
+.readme pre {font-family: "Courier New", Fixed}
