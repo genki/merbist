@@ -19,4 +19,8 @@ class Plugin
   def self.desc
     all(:order => [:id.desc])
   end
+
+  def to_atom
+    "test"
+  end
 end

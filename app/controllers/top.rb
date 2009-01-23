@@ -1,7 +1,5 @@
 class Top < Application
-  before do
-    debugger
-  end
+  before :ensure_authenticated, :only => :fetch
 
   def index
     render

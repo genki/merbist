@@ -27,6 +27,7 @@ Merb::BootLoader.before_app_loads do
     :sendmail_path => '/usr/sbin/sendmail'
   } 
   Merb::Mailer.delivery_method = :sendmail
+  Merb.add_mime_type(:atom, :to_atom, %w[application/atom+xml])
 end
  
 Merb::BootLoader.after_app_loads do

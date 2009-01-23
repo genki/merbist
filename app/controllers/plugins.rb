@@ -2,6 +2,7 @@ class Plugins < Application
   # provides :xml, :yaml, :js
 
   def index
+    provides :atom
     @plugins = Plugin.desc.paginate(params.merge(:per_page => 20))
     display @plugins
   end
