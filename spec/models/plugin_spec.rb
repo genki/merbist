@@ -27,4 +27,16 @@ describe Plugin do
     @plugin.created_at.should be_kind_of(DateTime)
     @plugin.updated_at.should be_kind_of(DateTime)
   end
+
+  it "should make repos nil if it is blank" do
+    @plugin.repos = "  "
+    @plugin.repos.should be_nil
+    @plugin.repos = "git://test.com/foo.git"
+    @plugin.repos.should_not be_nil
+  end
+
+  it "should make repos stripped if it has white spaces" do
+    @plugin.repos = "  git://test.com/foo.git  "
+    @plugin.repos.should == "git://test.com/foo.git"
+  end
 end

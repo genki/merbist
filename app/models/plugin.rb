@@ -39,4 +39,9 @@ class Plugin
     return nil if path.blank?
     @readme ||= open(path).read
   end
+
+  def repos=(repos)
+    @repos = repos.strip
+    @repos = nil if @repos.blank?
+  end
 end
