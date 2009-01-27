@@ -27,6 +27,7 @@ class Plugin
 
   before(:create){@created_at = DateTime.now}
   before(:save){@updated_at = DateTime.now}
+  before(:save){@error = nil if repos.blank?}
 
   def self.desc
     all(:order => [:id.desc])
@@ -48,7 +49,7 @@ class Plugin
   end
 
   def repos=(repos)
-    @repos = repos.strip
+    @repos = repos && repos.strip
     @repos = nil if @repos.blank?
   end
 end

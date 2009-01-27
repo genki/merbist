@@ -48,4 +48,15 @@ describe Plugin do
     @plugin.valid?
     @plugin.should be_valid
   end
+
+  it "should make erorr empty if repos is empty" do
+    @plugin.error = "some error"
+    @plugin.error.should_not be_blank
+    @plugin.repos = "git://foo.bar.com/foo.git"
+    @plugin.save.should be_true
+    @plugin.error.should_not be_blank
+    @plugin.repos = nil
+    @plugin.save.should be_true
+    @plugin.error.should be_blank
+  end
 end
