@@ -17,6 +17,13 @@ class Plugin
   validates_present :user
   validates_present :description
   validates_format :home, :as => :url
+  validates_with_block :repos do
+    begin
+      repos.nil? || ::URI.parse(repos).scheme
+    rescue Exception => e
+      [false, e.message]
+    end
+  end
 
   before(:create){@created_at = DateTime.now}
   before(:save){@updated_at = DateTime.now}

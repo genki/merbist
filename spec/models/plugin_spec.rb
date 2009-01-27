@@ -39,4 +39,13 @@ describe Plugin do
     @plugin.repos = "  git://test.com/foo.git  "
     @plugin.repos.should == "git://test.com/foo.git"
   end
+
+  it "should validate repos as an URL" do
+    @plugin.should be_valid
+    @plugin.repos = "foo.com"
+    @plugin.should_not be_valid
+    @plugin.repos = " http://test.com/foo.git "
+    @plugin.valid?
+    @plugin.should be_valid
+  end
 end
