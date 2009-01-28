@@ -1,8 +1,12 @@
 class Top < Application
+  MERB_DOC_URI = "http://merbivore.com/documentation/current/doc/rdoc/stack"
   before :ensure_authenticated, :only => :fetch
 
   def index
-    render
+    case request.host.split(".")[0]
+    when 'doc', 'api'; redirect MERB_DOC_URI
+    else render
+    end
   end
 
   def gems(path)
