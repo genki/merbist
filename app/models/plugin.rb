@@ -19,7 +19,7 @@ class Plugin
   validates_format :home, :as => :url
   validates_with_block :repos do
     begin
-      repos.nil? || ::URI.parse(repos).scheme
+      @repos.blank? || ::URI.parse(@repos).scheme
     rescue Exception => e
       [false, e.message]
     end
@@ -49,7 +49,6 @@ class Plugin
   end
 
   def repos=(repos)
-    @repos = repos && repos.strip
-    @repos = nil if @repos.blank?
+    attribute_set :repos, repos.blank? ? nil : repos.strip
   end
 end
