@@ -5,7 +5,7 @@
 <ul>
   <% @plugins.each do |plugin| %>
     <li>
-      <%= link_to h(plugin.name), resource(plugin) %>
+      <%= link_to h(plugin.signature), resource(plugin) %>
       <% unless plugin.repos.blank? %>
         &dagger;
       <% end %>

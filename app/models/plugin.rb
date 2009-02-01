@@ -38,6 +38,20 @@ class Plugin
     File.basename(repos.strip).split(%r{\.git$})[0]
   end
 
+  def version
+    return @version if @version
+    return nil if repos.blank?
+    gemdir = File.join(Merb::Config[:gem_home], 'gems')
+    pattern = File.join(gemdir, "#{gemname}-*.gem")
+    path = Dir.glob(pattern).sort.first
+    return if path.blank?
+    @version ||= path.split('-').last.split('.gem').first
+  end
+
+  def signature
+    version ? "#{name}-#{version}" : name
+  end
+
   def readme
     return @readme if @readme
     return nil if repos.blank?
