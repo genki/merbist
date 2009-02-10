@@ -43,7 +43,9 @@ class Plugin
     return nil if repos.blank?
     gemdir = File.join(Merb::Config[:gem_home], 'gems')
     pattern = File.join(gemdir, "#{gemname}-*.gem")
-    path = Dir.glob(pattern).sort.last
+    path = Dir.glob(pattern).sort_by do |path|
+      path[0..-5]
+    end.last
     return if path.blank?
     @version ||= path.split('-').last.split('.gem').first
   end
