@@ -1,6 +1,0 @@
---- 
-port: "4001"
-environment: production
-pid_file: log/mongrel.pid
-servers: 2
-cwd: /mnt/app/merbist/current
