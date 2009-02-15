@@ -49,8 +49,7 @@ private
             system "git pull origin"
           end
         else
-          repos = "--depth=1 #{plugin.repos.strip}"
-          git = Git.clone(repos, path)
+          git = Git.clone(plugin.repos.strip, path, :depth => 1)
         end
         spec = Gem::Specification.load(File.join(path, "#{name}.gemspec"))
         git.chdir do
