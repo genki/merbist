@@ -9,7 +9,6 @@ end
 
 describe "resource(:users)" do
   describe "GET" do
-    
     before(:each) do
       @response = request(resource(:users))
     end
@@ -21,7 +20,6 @@ describe "resource(:users)" do
     it "contains a list of users" do
       @response.should have_xpath("//ul")
     end
-    
   end
   
   describe "GET", :given => "fixture" do
