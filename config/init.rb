@@ -16,6 +16,7 @@ Merb::Config.use do |c|
 end
  
 Merb::BootLoader.before_app_loads do
+  require "fixtures_hash_fix"
   # This will get executed after dependencies have been loaded but before your app's classes have loaded.
 
   Merb::Slices::config[:merb_auth_slice_activation].merge!({

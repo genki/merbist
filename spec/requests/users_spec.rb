@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
-given "a user exists" do
-  User.all.destroy!
+given "fixture" do
+  Merb::Fixtures.load_fixture("users")
   login
   request(resource(:users), :method => "POST", 
     :params => { :user => { :id => nil }})
@@ -24,7 +24,7 @@ describe "resource(:users)" do
     
   end
   
-  describe "GET", :given => "a user exists" do
+  describe "GET", :given => "fixture" do
     before(:each) do
       @response = request(resource(:users))
     end
@@ -36,7 +36,7 @@ describe "resource(:users)" do
 end
 
 describe "resource(@user)" do 
-  describe "a successful DELETE", :given => "a user exists" do
+  describe "a successful DELETE", :given => "fixture" do
      before(:each) do
        @response = request(resource(User.first), :method => "DELETE")
      end
@@ -58,7 +58,7 @@ describe "resource(:users, :new)" do
   end
 end
 
-describe "resource(@user, :edit)", :given => "a user exists" do
+describe "resource(@user, :edit)", :given => "fixture" do
   before(:each) do
     @response = request(resource(User.first, :edit))
   end
@@ -68,7 +68,7 @@ describe "resource(@user, :edit)", :given => "a user exists" do
   end
 end
 
-describe "resource(@user)", :given => "a user exists" do
+describe "resource(@user)", :given => "fixture" do
   
   describe "GET" do
     before(:each) do

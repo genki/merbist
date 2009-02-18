@@ -1,0 +1,11 @@
+users:
+  -
+    :login: krusty
+    :email: genki@s21g.com
+    :activated_at: 2009/1/1
+    :crypted_password: "4137c56b07fae2c0463f537e1faaf1192b076980"
+    plugins:
+      -
+        :name: test
+        :home: "http://blog.s21g.com/genki"
+        :description: "Test Plugin"
