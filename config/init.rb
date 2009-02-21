@@ -23,6 +23,16 @@ Merb::BootLoader.before_app_loads do
     :from_email => 'do_not_reply@merbi.st',
     :activation_host => 'merbi.st',
   })
+
+  Merb::Cache.setup do
+    register(:memcached, Merb::Cache::MemcachedStore,
+      :namespace => "merbist",
+      :servers => ["127.0.0.1:11211"])
+    register(:file_store, Merb::Cache::FileStore,
+      :dir => Merb.root/:public)
+    register(:page_store, Merb::Cache::PageStore[:file_store])
+    register(:action_store, Merb::Cache::ActionStore[:memcached])
+  end
             
   Merb::Mailer.config = {
     :sendmail_path => '/usr/sbin/sendmail'

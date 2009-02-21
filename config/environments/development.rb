@@ -23,4 +23,9 @@ Merb::BootLoader.before_app_loads do
   })
 
   Merb::Config[:gem_home] = Merb.root / "log/gems"
+
+  Merb::Cache.setup do
+    require 'logging_memcached_store'
+    register(LoggingAdhocStore[:page_store, :action_store])
+  end
 end

@@ -44,7 +44,7 @@ class Plugins < Application
     @plugin = Plugin.get(id)
     raise NotFound unless @plugin
     if @plugin.update_attributes(plugin)
-       redirect resource(@plugin)
+      redirect resource(@plugin)
     else
       display @plugin, :edit
     end
