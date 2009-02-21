@@ -24,6 +24,15 @@ div.command {text-align: left}
 
 .problem {color: #800}
 
+.half {width: 370px}
+.half.right {float: right}
+.half.right {padding-left: 10px}
+.half.right {margin-left: -3px}
+.half.left {float: left}
+.half.left {padding-right: 10px}
+.half.left {margin-right: -3px}
+.half h2 {text-align: center}
+
 #base {text-align: left}
 #base {margin: 0px auto}
 #base {padding: 0px 0px 0px 0px}

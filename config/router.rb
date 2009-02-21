@@ -30,6 +30,9 @@ Merb::Router.prepare do
   resources :gems
   resources :plugins
   resources :users
+  resource :top, :controller => :top do |top|
+    top.aggregates :users
+  end
   # RESTful routes
   # resources :posts
 

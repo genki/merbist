@@ -7,6 +7,11 @@ class Users < Application
     display @users
   end
 
+  def recent
+    @users = User.desc.all(:limit => 10)
+    display @users
+  end
+
   def show(id)
     @user = User.get(id)
     raise NotFound unless @user

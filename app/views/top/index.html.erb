@@ -2,17 +2,10 @@
 Merbist
 </h1>
 
-<h2>Merb Resources</h2>
-
-<ul>
-  <li>
-    <%= link_to 'Documentation',
-      'http://merbivore.com/documentation/current/doc/rdoc/stack/index.html'
-    %>
-  </li>
-  <li>
-    <%= link_to 'Source of this site',
-      'http://github.com/genki/merbist/tree/master'
-    %>
-  </li>
-</ul>
+<div class="half left">
+  <%= partial :resource %>
+</div>
+<div class="half right">
+  <%= component :users, :recent %>
+</div>
+<div style="clear:both"><!----></div>

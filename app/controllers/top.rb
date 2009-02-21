@@ -9,6 +9,10 @@ class Top < Application
     end
   end
 
+  def users(id)
+    redirect url(:user, :id => id)
+  end
+
   def gems(path)
     path = File.join(Merb::Config[:gem_home],
       path.split(File::Separator).delete_if{|i| i =~ %r{^\.+$}})
