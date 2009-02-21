@@ -74,3 +74,5 @@ dl.form textarea {width: 680px}
 .readme pre {word-wrap   : break-word}
 .readme pre {font-size: 12px}
 .readme pre {font-family: "Courier New", Fixed}
+
+img.avatar {vertical-align: middle}

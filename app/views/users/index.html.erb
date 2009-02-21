@@ -3,7 +3,9 @@
 <ul>
   <% @users.each do |user| %>
     <li>
+      <%= gravater user.email, 32, :class => :avatar %>
       <%= link_to h(user.login), resource(user) %>
+      <%= t(['%d plugin', '%d plugins'], user.plugins.count) %>
     </li>
   <% end %>
 </ul>
