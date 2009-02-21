@@ -2,13 +2,20 @@
 
 <h1>Edit <%= @user.login %></h1>
 
+<%= error_messages_for @user %>
 <%= form_for @user, :action => resource(@user), :method => :put do %>
-  <dl>
+  <dl class="form">
     <dt>
       <%= label "Email", :for => :email %>
     </dt>
     <dd>
       <%= h(@user.email) %>
+    </dd>
+    <dt>
+      <%= label "Homepage", :for => :home %>
+    </dt>
+    <dd>
+      <%= text_field :home %>
     </dd>
     <% if session.user.admin? %>
       <dt>
@@ -20,7 +27,7 @@
     <% end %>
     <dt>Are you sure?</dt>
     <dd>
-      <%= submit "Submit" %>
+      <%= submit "Submit", :class => :submit %>
     </dd>
   </dl>
 <% end =%>

@@ -16,6 +16,7 @@ class User
   property :login,  String
   property :email,  String
   property :admin,  Boolean
+  property :home,   Text
 
   has n, :plugins
   #has n, :groups, :through => :assignments
@@ -24,6 +25,7 @@ class User
   validates_length :login, :min => 4
   validates_is_unique :login
   validates_format :email, :as => :email_address
+  validates_format :home, :as => :url, :allow_nil => true
 
   def self.desc
     all(:order => [:id.desc])
