@@ -43,6 +43,7 @@ class Plugins < Application
   def update(id, plugin)
     @plugin = Plugin.get(id)
     raise NotFound unless @plugin
+    raise Unauthorized unless @plugin.user == session.user
     if @plugin.update_attributes(plugin)
       redirect resource(@plugin)
     else
@@ -53,6 +54,7 @@ class Plugins < Application
   def destroy(id)
     @plugin = Plugin.get(id)
     raise NotFound unless @plugin
+    raise Unauthorized unless @plugin.user == session.user
     if @plugin.destroy
       redirect resource(:plugins)
     else

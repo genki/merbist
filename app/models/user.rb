@@ -19,6 +19,7 @@ class User
   property :home,   Text
 
   has n, :plugins
+  has n, :sites
   #has n, :groups, :through => :assignments
 
   validates_present :login, :email

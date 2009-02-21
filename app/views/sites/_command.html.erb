@@ -1,0 +1,7 @@
+<div id="command">
+  <%= link_to 'Index', resource(:sites) %>
+  <%= link_to 'New', resource(:sites, :new) %>
+  <% if @site && !@site.new_record? && @site.user == session.user %>
+    <%= link_to 'Edit', resource(@site, :edit) %>
+  <% end %>
+</div>

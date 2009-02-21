@@ -1,0 +1,12 @@
+<%= partial :command %>
+
+<h1>Sites Using Merb</h1>
+
+<ul>
+<% @sites.each do |site| %>
+  <li>
+    <%= link_to h(site.title), resource(site) %>
+    <%= link_to h(site.uri), site.uri %>
+  </li>
+<% end %>
+</ul>

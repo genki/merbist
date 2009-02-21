@@ -47,6 +47,7 @@ class Users < Application
   def update(id, user)
     @user = User.get(id)
     raise NotFound unless @user
+    raise Unauthorized unless @user == session.user
     if @user.update_attributes(user)
        redirect resource(@user)
     else
@@ -57,6 +58,7 @@ class Users < Application
   def destroy(id)
     @user = User.get(id)
     raise NotFound unless @user
+    raise Unauthorized unless @user == session.user
     if @user.destroy
       redirect resource(:users)
     else

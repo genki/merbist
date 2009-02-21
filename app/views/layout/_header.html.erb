@@ -1,6 +1,7 @@
 <div id="navi">
   <%= link_to 'Top', url(:root) %>
   <%= link_to 'Plugins', resource(:plugins) %>
+  <%= link_to 'Sites', resource(:sites) %>
   <%= link_to 'Users', resource(:users) %>
   <% if session.user && session.user.admin? %>
     <%= link_to 'Fetch', url(:fetch) %>

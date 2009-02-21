@@ -1,0 +1,9 @@
+<h1>
+  Edit 
+  <%= h(@site.title) %>
+</h1>
+
+<%= error_messages_for @site %>
+<%= form_for @site, :action => resource(@site), :method => :put do %>
+  <%= partial :form %>
+<% end =%>

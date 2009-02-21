@@ -1,0 +1,6 @@
+<h1>Register New Site That Uses Merb</h1>
+
+<%= error_messages_for @site %>
+<%= form_for @site, :action => resource(:sites) do %>
+  <%= partial :form %>
+<% end =%>

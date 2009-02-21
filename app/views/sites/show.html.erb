@@ -1,0 +1,12 @@
+<%= partial :command %>
+<h1>
+  <%= h(@site.title) %>
+</h1>
+
+<p>
+  <%= link_to h(@site.uri), @site.uri %>
+</p>
+<p>
+  Registered by
+  <%= link_to h(@site.user.login), resource(@site.user) %>
+</p>
