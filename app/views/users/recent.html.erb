@@ -1,6 +1,6 @@
 <h2>Recent Merbists</h2>
 
-<ul>
+<ul style="list-style:none">
 <% @users.each do |user| %>
   <li>
   <%= gravater user.email, 16, :class => 'avatar' %>
