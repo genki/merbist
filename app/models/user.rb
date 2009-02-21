@@ -20,6 +20,7 @@ class User
 
   has n, :plugins
   has n, :sites
+  has n, :talks
   #has n, :groups, :through => :assignments
 
   validates_present :login, :email

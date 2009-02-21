@@ -1,0 +1,47 @@
+<h1>Merbist Talk</h1>
+
+<%= error_messages_for @talk %>
+<% if session.user %>
+<div id="talk-form">
+  <%= gravater session.user.email, 50 %>
+  <%= form_for @talk, :action => resource(:talks) do %>
+    <%= text_area :message %>
+    <%= submit 'Talk', :class => :submit %>
+  <% end =%>
+  <div class="clear"><!----></div>
+</div>
+<% end %>
+
+<dl class="talk">
+<% @talks.each do |talk| %>
+  <% if @last_user != talk.user %>
+    <% @last_user = talk.user %>
+    <dt>
+      <%= gravater @last_user.email, 16, :class => :avatar %>
+      <%= link_to h(@last_user.login), resource(@last_user) %>
+    </dt>
+  <% end %>
+  <dd>
+    <%= format(talk.message) %>
+    <span style="color:#AAA">
+      - <%= t(talk.created_at).ago_in_words %> ago.
+    </span>
+  </dd>
+<% end %>
+</dl>
+
+<%= paginate @talks %>
+
+<%#=
+last_id = Talk.all.last.id rescue 0
+tag :script, %{
+$(function(){
+  setInterval(function(){
+    $.get(['/talks/', #{last_id.to_json}].join(''),
+      {time:new Number(new Date())}, function(js){
+        if(!!eval(js)) location.reload();
+      });
+  }, 5*1000);
+  setInterval(function(){location.reload()}, 60*1000);
+});
+}, :type => 'text/javascript' %>

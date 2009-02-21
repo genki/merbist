@@ -76,3 +76,16 @@ dl.form textarea {width: 680px}
 .readme pre {font-family: "Courier New", Fixed}
 
 img.avatar {vertical-align: middle}
+
+dl.talk {margin: 20px 50px}
+dl.talk dd {margin: 5px 0px 5px 20px}
+
+#talk-form {margin: 0px 50px}
+#talk-form {width: 700px}
+#talk-form img {float: left}
+#talk-form textarea {width: 500px}
+#talk-form textarea {margin: 0px 10px}
+#talk-form textarea {height: 48px}
+#talk-form textarea {float: left}
+#talk-form input.submit {width: 50px}
+#talk-form input.submit {height: 50px}
