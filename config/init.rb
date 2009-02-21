@@ -25,13 +25,12 @@ Merb::BootLoader.before_app_loads do
   })
 
   Merb::Cache.setup do
-    register(:memcached, Merb::Cache::MemcachedStore,
-      :namespace => "merbist",
-      :servers => ["127.0.0.1:11211"])
-    register(:file_store, Merb::Cache::FileStore,
-      :dir => Merb.root/:public)
-    register(:page_store, Merb::Cache::PageStore[:file_store])
-    register(:action_store, Merb::Cache::ActionStore[:memcached])
+    #register(:memcache, Merb::Cache::MemcacheStore,
+    #  :namespace => "merbist",
+    #  :servers => ["127.0.0.1:11211"])
+    #register(:file_store, Merb::Cache::FileStore)
+    #register(:page_store, Merb::Cache::PageStore[:file_store])
+    #register(:action_store, Merb::Cache::ActionStore[:file_store])
   end
             
   Merb::Mailer.config = {

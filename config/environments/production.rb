@@ -20,6 +20,6 @@ Merb::BootLoader.before_app_loads do
   Merb::Config[:gem_home] = Merb.root / "public/system"
 
   Merb::Cache.setup do
-    register(LoggingAdhocStore[:page_store, :action_store])
+    #register(LoggingAdhocStore[:page_store, :action_store])
   end
 end
