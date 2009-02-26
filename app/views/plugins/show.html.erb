@@ -54,6 +54,6 @@
 <% if session.user %>
   <%= form_for_component :reports %>
 <% end %>
-<% if @plugin.reports.present? %>
+<% if @plugin.reports.count > 0 %>
   <%= component :reports, :list %>
 <% end %>
