@@ -56,6 +56,7 @@ h1 {text-align: center}
 h1 a {color: #000}
 
 dl.form input {width: 580px}
+dl.form input.half {width: 280px}
 dl.form input.submit {width: auto}
 dl.form textarea {width: 680px}
 
@@ -89,3 +90,5 @@ dl.talk dd {margin: 5px 0px 5px 20px}
 #talk-form textarea {float: left}
 #talk-form input.submit {width: 50px}
 #talk-form input.submit {height: 50px}
+
+form.delete-btn {float: right}

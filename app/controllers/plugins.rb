@@ -1,4 +1,5 @@
 class Plugins < Application
+  aggregates :show => :reports
   before :append_title
   # provides :xml, :yaml, :js
 
@@ -11,6 +12,7 @@ class Plugins < Application
   def show(id)
     @plugin = Plugin.get(id)
     raise NotFound unless @plugin
+    @report = @plugin.reports.new
     prepend_plugin_name_to_title(@plugin)
     display @plugin
   end

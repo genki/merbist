@@ -1,0 +1,20 @@
+<h2>Reports</h2>
+
+<dl>
+<% @reports.each do |report| %>
+  <dt>
+    <%= link_to h(report.environment), resource(report) %>
+    <%= report.working? ? "Works!" : "Not yet." %>
+    by
+    <%= gravater report.user.email, 16, :class => 'avatar' %>
+    <%= link_to h(report.user.login), resource(report.user) %>
+  </dt>
+  <% if report.comment.present? %>
+    <dd>
+      <%= h(report.comment) %>
+    </dd>
+  <% end %>
+<% end %>
+</dl>
+
+<%= paginate @reports %>

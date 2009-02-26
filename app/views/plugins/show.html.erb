@@ -50,3 +50,8 @@
   <pre><code><%= h(@plugin.readme) %></code></pre>
 </div>
 <% end %>
+
+<% if session.user %>
+  <%= form_for_component :reports %>
+<% end %>
+<%= component :reports, :list %>

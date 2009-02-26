@@ -1,0 +1,12 @@
+<h2>
+  <%= delete_button @report %>
+  Edit Your Report
+</h2>
+
+<%= error_messages_for(@report) %>
+
+<dl class="form">
+<%= form_for @report, :action => resource(@report), :method => :put do %>
+  <%= partial :form %>
+<% end =%>
+</dl>

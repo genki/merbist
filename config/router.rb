@@ -27,10 +27,13 @@
 
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
+  resources :reports
   resources :talks
   resources :sites
   resources :gems
-  resources :plugins
+  resources :plugins do |plugin|
+    plugin.aggregates :reports
+  end
   resources :users
   resource :top, :controller => :top do |top|
     top.aggregates :users

@@ -11,6 +11,7 @@ class Plugin
   property :updated_at, DateTime
 
   belongs_to :user
+  has n, :reports
 
   validates_present :name
   validates_present :home

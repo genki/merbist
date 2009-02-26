@@ -1,0 +1,20 @@
+<dt>
+  <%= label 'Environemnt', :for => :environment %>:
+  Ex) ruby-1.9.1 p0
+</dt>
+<dd>
+  <%= text_field :environment, :class => :half %>
+  <%= check_box :working, :label => 'working' %>
+</dd>
+<dt>
+  <%= label 'Comment', :for => :comment %>: (Optional)
+</dt>
+<dd>
+  <%= text_area :comment, :rows => 3 %>
+</dd>
+<dt>
+  Are your ready?
+</dt>
+<dd>
+  <%= submit 'Submit', :class => :submit %>
+</dd>
