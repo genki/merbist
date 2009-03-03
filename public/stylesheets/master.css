@@ -92,3 +92,9 @@ dl.talk dd {margin: 5px 0px 5px 20px}
 #talk-form input.submit {height: 50px}
 
 form.delete-btn {float: right}
+
+.plugin-list th {white-space: nowrap; background-color:#CCCCCC;}
+.plugin-list td {background-color: #E6F2FF;}
+.plugin-list tr.even td {background-color: white;}
+
+

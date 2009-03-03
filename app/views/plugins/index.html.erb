@@ -2,23 +2,34 @@
 
 <h1>Plugin List</h1>
 
-<ul>
-  <% @plugins.each do |plugin| %>
-    <li>
-      <%= link_to h(plugin.signature), resource(plugin) %>
-      <% unless plugin.repos.blank? %>
-        &dagger;
-      <% end %>
-      (<%= link_to h(plugin.user.login), resource(plugin.user) %>)
+<table class="plugin-list" cellspacing="1" border="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Repos</th>
+      <th>Registered by</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @plugins.each_with_index do |plugin,i| %>
+    <tr class="<%= "even" if i%2==0 %>">
+      <td><%= link_to h(plugin.signature), resource(plugin) %></td>
+      <td><%= "&dagger;" unless plugin.repos.blank? %></td>
+      <td><%= link_to h(plugin.user.login), resource(plugin.user) %></td>
+      <td><%= h(plugin.description) %></td>
+      <td>
       <% if plugin.error %>
         <span class="problem">
           (has problem)
         </span>
       <% end %>
-      <%= h(plugin.description) %>
-    </li>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
 
 <%= paginate @plugins %>
 
