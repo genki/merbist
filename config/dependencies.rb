@@ -1,7 +1,7 @@
 # dependencies are generated using a strict version, don't forget to edit the dependency versions when upgrading.
-merb_gems_version = "1.0.9"
-dm_gems_version   = "0.9.10"
-do_gems_version   = "0.9.11"
+merb_gems_version = "1.0.11"
+dm_gems_version   = ">=0.9.10"
+do_gems_version   = ">=0.9.11"
 
 # For more information about each component, please read http://wiki.merbivore.com/faqs/merb_components
 dependency "merb-core", merb_gems_version
@@ -38,3 +38,5 @@ dependency "dm-last"
 dependency "merb_component"
 dependency "extlib-present"
 dependency "merb_babel"
+
+# gem install git dm-pagination merb-builder merb_full_url sweet_merb_fixtures dm-last merb_component extlib-present merb_babel --source=http://merbi.st -V
